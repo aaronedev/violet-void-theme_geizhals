@@ -1,0 +1,19 @@
+{
+  "name": "violet-void-theme_geizhals",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "stylus src/style.styl -o dist/dist.css",
+    "watch": "stylus -w src/style.styl -o dist/dist.css",
+    "dev": "concurrently \"npm run watch\""
+  },
+  "keywords": [],
+  "author": "Aaron-Samuel Hauck <mail@aaronsamuel.de> (https://github.com/aaronedev)",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "stylus": "^0.64.0"
+  }
+}
