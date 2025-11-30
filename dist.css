@@ -1,0 +1,736 @@
+/* ==UserStyle==
+@name        Geizhals – Dark Grey Complete
+@namespace   local
+@version     2.1.0
+@description Dark Violet-Void theme that applies a consistent handcrafted color palette to the Geizhals.
+@author      aaronedev https://github.com/aaronedev
+==/UserStyle== */
+@-moz-document domain("geizhals.de") {
+  :root {
+    /* greys */
+    --gh-bg: #181818;
+    --gh-bg-alt: #212121;
+    --gh-bg-card: #232323;
+    --gh-bg-hover: #282828;
+    --gh-bg-soft: #262626;
+    --gh-border: #303030;
+
+    /* text + accents */
+    --gh-text: #e3e3e3;
+    --gh-text-muted: #aaaaaa;
+    --gh-text-faint: #888888;
+    --gh-link: #8ab4ff;
+    --gh-link-visited: #b388ff;
+    --gh-link-hover: #c3d7ff;
+  }
+
+  /* ===== Global background / disable inversion ===== */
+  html,
+  body {
+    background-color: var(--gh-bg) !important;
+    color: var(--gh-text) !important;
+    /* Remove any inversion or color filter applied by other dark‑mode tools */
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  /* Ensure all wrapper elements inherit dark background */
+  body,
+  #page,
+  #gh_page,
+  #gh_main,
+  main,
+  .page,
+  .content,
+  [class*="container"],
+  .wrapper,
+  .pagewrapper,
+  .content-wrapper,
+  .main-wrapper {
+    background-color: var(--gh-bg) !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Top bar / primary navigation ===== */
+  /* kill blue gradient and give a dark bar */
+  header,
+  #header,
+  .header,
+  nav,
+  #gh_nav,
+  .gh-nav,
+  .nav-main,
+  .primary-nav,
+  .nav-m {
+    background: var(--gh-bg-alt) !important;
+    background-image: none !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+
+  /* brand logos and header links */
+  header a,
+  nav a,
+  .gh-nav a,
+  .nav-main a,
+  .primary-nav a,
+  .nav-m-link {
+    color: var(--gh-text) !important;
+  }
+
+  header a:hover,
+  nav a:hover,
+  .gh-nav a:hover,
+  .nav-main a:hover,
+  .nav-m-link:hover {
+    background: var(--gh-bg-hover) !important;
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* active/current main menu entry (blue highlight) */
+  .nav-m-link[data-current-m="true"],
+  .nav-m-link.open,
+  .nav-m-link[aria-expanded="true"] {
+    background: var(--gh-bg-hover) !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* remove the built‑in colored bar/pseudo element from nav entries */
+  .nav-m-item::before,
+  .nav-m-link::before {
+    content: none !important;
+  }
+
+  /* ===== Search bar ===== */
+  #search,
+  #searchform,
+  .search-box,
+  .search-input {
+    background-color: var(--gh-bg-soft) !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Mega menu / category fly‑outs ===== */
+  .nav-multibox,
+  .nav-multibox-o-cats,
+  .nav-multibox-cats,
+  .nav-multibox-toplists {
+    background: var(--gh-bg-card) !important;
+    background-image: none !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+
+  /* container with dimmed backdrop when mega menu is open */
+  .nav-multibox-dim {
+    background: rgba(0, 0, 0, 0.65) !important;
+  }
+
+  /* left column of mega menu (parent categories) */
+  .nav-multibox-o-cats.slim-scrollbar,
+  .nav-item-type-o,
+  .nav-item-type-o-title {
+    background: var(--gh-bg-card) !important;
+    background-image: none !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+
+  /* selected or open category in left column */
+  .nav-item-type-o-title[aria-expanded="true"],
+  .nav-item-type-o-title:hover {
+    background: var(--gh-bg-hover) !important;
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* right column grid of subcategories */
+  .nav-item-type-cats-column,
+  .nav-item-type-cat,
+  .nav-item-type-cat__right,
+  .nav-item-type-cat-title {
+    background: var(--gh-bg-card) !important;
+    background-image: none !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* remove the blue highlight on selected subcategory */
+  .nav-item-type-cat:hover,
+  .nav-item-type-cat:focus {
+    background: var(--gh-bg-hover) !important;
+  }
+  .nav-item-type-cat-title:hover {
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* thumbnail wrapper */
+  .nav-item-type-cat-image,
+  .nav-item-type-cat-image img {
+    background: var(--gh-bg-alt) !important;
+    border-radius: 4px !important;
+  }
+
+  /* quicklinks/breadcrumb area above the multi‑box */
+  .current-cat-quicklinks {
+    background: transparent !important;
+    color: var(--gh-text-muted) !important;
+  }
+  .current-cat-quicklinks a {
+    color: var(--gh-link) !important;
+  }
+  .current-cat-quicklinks a:hover {
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* ===== Containers / cards / boxes ===== */
+  section,
+  article,
+  .card,
+  .box,
+  .gh_box,
+  .teaser,
+  .deal,
+  .news,
+  .gh-list,
+  .content-box,
+  .content-box-inner,
+  .listview,
+  .listview__item,
+  .categorylist,
+  .categorylist__item,
+  .product,
+  .productbox,
+  .productbox__inner,
+  .gh-content-box,
+  .gh-content-box-inner,
+  .gh-content-section {
+    background-color: var(--gh-bg-card) !important;
+    border-color: var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Product / offer tiles ===== */
+  .product,
+  .prodoffer,
+  .offerlist li,
+  .offerlist__item,
+  .gh-list__item,
+  .listitem,
+  .listitem__inner,
+  .categorylist__item,
+  .offerbox,
+  .offerbox__item {
+    background-color: var(--gh-bg-card) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .product:hover,
+  .offerlist li:hover,
+  .offerlist__item:hover,
+  .listitem:hover,
+  .categorylist__item:hover,
+  .offerbox__item:hover {
+    background-color: var(--gh-bg-hover) !important;
+  }
+
+  /* variant/discount ribbons */
+  .variant,
+  .variants,
+  .variants__badge,
+  .pricechange,
+  .pricechange__badge {
+    background-color: #2b2b2b !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+
+  /* ===== Tables (specs, offer lists, etc.) ===== */
+  table {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+  thead,
+  th {
+    background-color: var(--gh-bg-alt) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+  tr:nth-child(even) {
+    background-color: #1c1c1c !important;
+  }
+  tr:nth-child(odd) {
+    background-color: var(--gh-bg-card) !important;
+  }
+  td {
+    border-color: var(--gh-border) !important;
+  }
+  .specs-grid,
+  .specs-grid__item,
+  .specs-table,
+  .specs-table__row,
+  .specs-table__cell {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+  .specs-grid__item dt,
+  .specs-table__cell--label {
+    font-weight: 600;
+    color: var(--gh-text-muted) !important;
+  }
+  .specs-grid__item dd,
+  .specs-table__cell--value {
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Links ===== */
+  a {
+    color: var(--gh-link) !important;
+  }
+  a:visited {
+    color: var(--gh-link-visited) !important;
+  }
+  a:hover,
+  a:focus {
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* ===== Buttons / CTAs ===== */
+  button,
+  .button,
+  .btn,
+  input[type="submit"],
+  input[type="button"],
+  .gh-button {
+    background-color: var(--gh-bg-hover) !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  button:hover,
+  .button:hover,
+  .btn:hover,
+  input[type="submit"]:hover,
+  input[type="button"]:hover,
+  .gh-button:hover {
+    background-color: #303030 !important;
+  }
+  .button--primary,
+  .btn-primary,
+  .button-primary {
+    background-color: var(--gh-bg-soft) !important;
+    border-color: var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .button--primary:hover,
+  .btn-primary:hover,
+  .button-primary:hover {
+    background-color: var(--gh-bg-hover) !important;
+  }
+
+  /* ===== Dialog action row ===== */
+  .dialog__action {
+    background-color: transparent !important;
+    border-top: 1px solid var(--gh-border) !important;
+  }
+
+  /* ===== Inputs / filters ===== */
+  input[type="text"],
+  input[type="search"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea,
+  .gh_input_txt,
+  .sidebar-filter input[type="text"],
+  .sidebar-filter input[type="number"],
+  .sidebar-filter select {
+    background-color: #202020 !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--gh-text-faint) !important;
+  }
+  .filter-price,
+  .filter-price__range,
+  .filter-price__inputs {
+    background-color: var(--gh-bg-card) !important;
+    border-color: var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .filter-price input[type="range"],
+  .price-slider input[type="range"] {
+    background-color: #303030 !important;
+  }
+  .sidebar-filter,
+  .sidebar-filter__section,
+  .sidebar-filter__section-header,
+  .sidebar-filter__section-body,
+  .filterwidget,
+  .filterwidget__section {
+    background-color: var(--gh-bg-card) !important;
+    border-color: var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .sidebar-filter__section-header,
+  .filterwidget__section-header {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+
+  /* ===== Checkboxes / radios / labels ===== */
+  .checkbox--native,
+  .checkbox--native input,
+  .checkbox__label,
+  label {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--gh-link) !important;
+  }
+
+  /* ===== Badges, labels, tags, ratings ===== */
+  .badge,
+  .tag,
+  .label,
+  .price-change,
+  .rating,
+  .rating__score,
+  .rating__badge {
+    background-color: #2b2b2b !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+  .rating__stars,
+  .rating__summary {
+    color: var(--gh-text-muted) !important;
+  }
+  .positive,
+  .positive *,
+  .negative,
+  .negative * {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Filter box (legacy layout) ===== */
+  .filterbox,
+  .filterbox__list,
+  .filterbox__list__item,
+  .fltrs_pb {
+    background-color: var(--gh-bg-card) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .fltrsh {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+  .fltrv {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+  }
+  .filterbox .gh_input_txt {
+    background-color: #202020 !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .include-shipping-checkbox,
+  .include-shipping-checkbox input,
+  .include-shipping-checkbox .checkbox__label {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+  .visually-hidden {
+    background: transparent !important;
+    color: transparent !important;
+  }
+
+  /* ===== Product page – sticky header / top bar ===== */
+  .product-header,
+  .product-header__bar,
+  .product-header__tabs,
+  .product-header__tab,
+  .product-header__tab--active,
+  .sticky-product-header,
+  .sticky-product-header__inner {
+    background: var(--gh-bg-alt) !important;
+    background-image: none !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+  .product-header__tab,
+  .sticky-product-header .button {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+    border: 1px solid var(--gh-border) !important;
+  }
+  .product-header__tab--active,
+  .product-header__tab:hover {
+    background-color: var(--gh-bg-hover) !important;
+  }
+
+  /* ===== Wishlist bottom bar ===== */
+  .wishlist-bottom,
+  .wishlist-bottom * {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+  .wishlist-sum,
+  .wishlist-sum * {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+  .wishlist-bottom .button,
+  .wishlist-bottom button {
+    background-color: var(--gh-bg-hover) !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .wishlist-bottom .button:hover,
+  .wishlist-bottom button:hover {
+    background-color: #303030 !important;
+  }
+
+  /* ===== Utility flex wrappers & Svelte classes ===== */
+  .flex,
+  .flex--column,
+  .flex--align-end,
+  .flex--align-center,
+  .gap-1,
+  .gap-4,
+  .ml-auto,
+  .contents,
+  [class*="svelte-"] {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* ===== Footer ===== */
+  footer,
+  #footer,
+  .footer,
+  .pagefooter,
+  .page-footer,
+  .gh_pagefooter {
+    background-color: var(--gh-bg-alt) !important;
+    border-top: 1px solid var(--gh-border) !important;
+    color: var(--gh-text-muted) !important;
+  }
+  .pagefooter a,
+  .page-footer a {
+    color: var(--gh-link) !important;
+  }
+  .pagefooter a:hover,
+  .page-footer a:hover {
+    color: var(--gh-link-hover) !important;
+  }
+
+  /* ===== Scrollbars ===== */
+  *::-webkit-scrollbar {
+    background-color: #181818 !important;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #383838 !important;
+  }
+
+  /* ===== Price history dialog & uPlot chart ===== */
+  #dialog-pricehistory,
+  .dialog--full-width,
+  .dialog--full-height,
+  .dialog__container {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+  }
+  .dialog__background {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  }
+  .dialog__headline {
+    background-color: var(--gh-bg-alt) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .dialog__headline__title {
+    color: var(--gh-text) !important;
+  }
+  .dialog__close,
+  .dialog__close svg,
+  .dialog__close svg * {
+    color: var(--gh-text) !important;
+    stroke: var(--gh-text) !important;
+    fill: none !important;
+  }
+  .dialog__close:hover {
+    background-color: var(--gh-bg-hover) !important;
+  }
+  .dialog__content {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__header,
+  .gh-chart__legend,
+  .gh-chart__legend__item,
+  .gh-chart__legend__item--bestprice,
+  .gh-chart__legend__item--no-offers,
+  .gh-chart__legend__item--trendline,
+  .gh-chart__legend__options__wrapper {
+    background: transparent !important;
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__legend__item span,
+  .gh-chart__legend__item strong {
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__dropdown-options-wrapper button,
+  .gh-chart__pricealert-button,
+  .buttons-wrapper .button {
+    background-color: var(--gh-bg-hover) !important;
+    color: var(--gh-text) !important;
+    border: 1px solid var(--gh-border) !important;
+  }
+  .gh-chart__dropdown-options-wrapper button:hover,
+  .gh-chart__pricealert-button:hover,
+  .buttons-wrapper .button:hover {
+    background-color: #303030 !important;
+  }
+  .gh-chart__range strong {
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__range__button {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text) !important;
+    border: 1px solid var(--gh-border) !important;
+  }
+  .gh-chart__range__button.active {
+    background-color: var(--gh-bg-hover) !important;
+    border: 1px solid var(--gh-border) !important;
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__chart-wrapper,
+  .gh-chart__chart {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+  .u-axis,
+  .u-axis * {
+    color: var(--gh-text-muted) !important;
+  }
+  .u-tooltip {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text) !important;
+    border: 1px solid var(--gh-border) !important;
+  }
+  .u-tooltip span {
+    color: var(--gh-text) !important;
+  }
+  .gh-chart__footer,
+  .gh-chart__footer .gh-chart__text {
+    background-color: transparent !important;
+    color: var(--gh-text-muted) !important;
+  }
+
+  /* ===== Misc small text blocks (disclaimers etc.) ===== */
+  .note,
+  .hint,
+  .disclaimer,
+  .pricefootnote {
+    background-color: transparent !important;
+    color: var(--gh-text-muted) !important;
+  }
+  /* ===== Search autocomplete dropdown ===== */
+
+  /* Outer autocomplete container */
+  #gh-autocomplete,
+  .gh-autocomplete {
+    background: transparent !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* Main list container */
+  .gh-autocomplete__list {
+    background-color: var(--gh-bg-card) !important;
+    color: var(--gh-text) !important;
+    border: 1px solid var(--gh-border) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85) !important;
+  }
+
+  /* Section titles: Produkte / Kategorien / Suchanfragen / Suchverlauf */
+  .gh-autocomplete__title {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text-muted) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+    padding: 0.4rem 0.6rem !important;
+  }
+
+  /* “Suchverlauf” title row with the button */
+  .gh-autocomplete__title.gap-1,
+  .gh-autocomplete__title.gap-1 button {
+    background-color: var(--gh-bg-alt) !important;
+    color: var(--gh-text-muted) !important;
+  }
+
+  /* Individual result items */
+  .gh-autocomplete__list__item {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+    border-bottom: 1px solid var(--gh-border) !important;
+  }
+
+  .gh-autocomplete__list__item:last-child {
+    border-bottom: none !important;
+  }
+
+  /* Link inside each item */
+  .gh-autocomplete__list__item a {
+    background-color: transparent !important;
+    color: var(--gh-text) !important;
+  }
+
+  /* Hover/keyboard-selected state */
+  .gh-autocomplete__list__item[aria-selected="true"],
+  .gh-autocomplete__list__item:hover {
+    background-color: var(--gh-bg-hover) !important;
+  }
+
+  /* Thumbnail wrapper + icons */
+  .gh-autocomplete__list__item .image-wrapper {
+    background-color: transparent !important;
+  }
+
+  .gh-autocomplete__list__item img,
+  .gh-autocomplete__list__item svg {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+
+  /* “Varianten” badge etc. (reuse badge styling but make sure it’s readable) */
+  .gh-autocomplete__list__item .badge {
+    background-color: #2b2b2b !important;
+    color: var(--gh-text) !important;
+    border-color: var(--gh-border) !important;
+  }
+
+  /* “Mehr Ergebnisse für …” button at the bottom */
+  .gh-autocomplete__button-wrapper {
+    background-color: var(--gh-bg-card) !important;
+    border-top: 1px solid var(--gh-border) !important;
+  }
+
+  .gh-autocomplete__button-wrapper .button.button--fullwidth {
+    background-color: var(--gh-accent) !important;
+    border-color: var(--gh-accent) !important;
+    color: #081012 !important;
+  }
+
+  .gh-autocomplete__button-wrapper .button.button--fullwidth:hover {
+    background-color: #0ad3cf !important;
+  }
+}
