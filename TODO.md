@@ -12,9 +12,9 @@
 ## 🟡 Medium Priority
 
 - [ ] **Accessibility Review**
-  - prefers-reduced-motion support
-  - prefers-reduced-transparency support
-  - Focus ring consistency
+  - [x] prefers-reduced-motion support
+  - [x] prefers-reduced-transparency support
+  - [ ] Focus ring consistency
 
 - [ ] **Code Quality**
   - Check for hardcoded colors
