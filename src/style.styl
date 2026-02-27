@@ -733,4 +733,28 @@
   .gh-autocomplete__button-wrapper .button.button--fullwidth:hover {
     background-color: #0ad3cf !important;
   }
+
+  /* ===== Accessibility: Reduced Motion ===== */
+  @css {
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  }
+
+  /* ===== Accessibility: Reduced Transparency ===== */
+  @css {
+    @media (prefers-reduced-transparency: reduce) {
+      .nav-multibox-dim,
+      .dialog__background {
+        background-color: rgba(0, 0, 0, 0.95) !important;
+      }
+    }
+  }
 }
