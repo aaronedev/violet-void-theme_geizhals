@@ -6,6 +6,60 @@
 @author      aaronedev https://github.com/aaronedev
 ==/UserStyle== */
 @-moz-document domain("geizhals.de") {
+
+  /* ===== Modern CSS: @property for typed custom properties ===== */
+  @css {
+    @property --gh-bg {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: #181818;
+    }
+    @property --gh-text {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: #e3e3e3;
+    }
+    @property --gh-link {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: #8ab4ff;
+    }
+    @property --gh-border {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: #303030;
+    }
+  }
+
+  /* ===== Modern CSS: @layer for cascade control ===== */
+  @css {
+    @layer reset, variables, base, components, utilities;
+    
+    @layer reset {
+      *, *::before, *::after {
+        scrollbar-width: thin;
+        scrollbar-color: #383838 #181818;
+      }
+    }
+    
+    @layer variables {
+      :root {
+        --gh-bg: #181818;
+        --gh-bg-alt: #212121;
+        --gh-bg-card: #232323;
+        --gh-bg-hover: #282828;
+        --gh-bg-soft: #262626;
+        --gh-border: #303030;
+        --gh-text: #e3e3e3;
+        --gh-text-muted: #aaaaaa;
+        --gh-text-faint: #888888;
+        --gh-link: #8ab4ff;
+        --gh-link-visited: #b388ff;
+        --gh-link-hover: #c3d7ff;
+      }
+    }
+  }
+
   :root {
     /* greys */
     --gh-bg: #181818;
@@ -49,6 +103,31 @@
   .main-wrapper {
     background-color: var(--gh-bg) !important;
     color: var(--gh-text) !important;
+  }
+
+  /* ===== Modern CSS: :has() selector enhancements ===== */
+  @css {
+    /* Card with image has different padding */
+    .product:has(.nav-item-type-cat-image) {
+      padding: 0.75rem;
+    }
+    
+    /* Form input with focus within parent */
+    .filterwidget:has(input:focus) {
+      border-color: var(--gh-link);
+    }
+    
+    /* Header with active dropdown */
+    header:has(.nav-multibox[style*="display: block"]) {
+      position: relative;
+      z-index: 1000;
+    }
+    
+    /* Table row with positive/negative price change */
+    tr:has(.positive),
+    tr:has(.negative) {
+      font-weight: 500;
+    }
   }
 
   /* ===== Top bar / primary navigation ===== */

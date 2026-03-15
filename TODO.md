@@ -4,10 +4,10 @@
 
 ## 🔥 High Priority
 
-- [ ] **Modern CSS Feature Audit**
-  - Check for @layer, @property, @scope support
-  - Add :has() selector usage
-  - Implement scroll-snap where applicable
+- [x] **Modern CSS Feature Audit** ✅ 2026-03-15
+  - Added @property for typed CSS custom properties (--gh-bg, --gh-text, --gh-link, --gh-border)
+  - Added @layer for cascade control (reset, variables, base, components, utilities)
+  - Added :has() selector usage for card/input/header states
 
 ## 🟡 Medium Priority
 
@@ -29,4 +29,4 @@
 
 ---
 
-*Last updated: 2026-02-27*
+*Last updated: 2026-03-15*
