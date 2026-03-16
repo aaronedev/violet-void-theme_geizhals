@@ -32,6 +32,7 @@
   - Integrated @layer with nesting for components
   - Added :is() and :where() with nesting examples
   - Browser support documentation included
+  - Commit: 12e1c50
 
 ---
 
