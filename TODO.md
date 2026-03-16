@@ -25,7 +25,13 @@
 
 - [ ] **Relative color syntax**
 - [ ] **View Transitions API**
-- [ ] **CSS nesting migration path**
+- [x] **CSS nesting migration path** ✅ 2026-03-16
+  - Added native CSS nesting examples with & reference syntax
+  - Included nested media queries and @supports patterns
+  - Added complex nesting for wishlist items, product tables, buttons, forms
+  - Integrated @layer with nesting for components
+  - Added :is() and :where() with nesting examples
+  - Browser support documentation included
 
 ---
 

@@ -836,4 +836,228 @@
       }
     }
   }
+
+  /* ===== Modern CSS: CSS Nesting Migration Path ===== */
+  @css {
+    /*
+     * CSS Nesting Migration Guide:
+     *
+     * Stylus:                    Native CSS:
+     * .parent {                 .parent {
+     *   .child {                  & .child {
+     *     color: red                color: red;
+     *   }                        }
+     * }                        }
+     *
+     * The & symbol references the parent selector.
+     * This allows full nesting without a preprocessor.
+     */
+
+    /* Wishlist items */
+    .wishlist-item {
+      background: var(--gh-bg-card);
+      border: 1px solid var(--gh-border);
+      border-radius: 4px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+
+      & .item-title {
+        color: var(--gh-text);
+        font-weight: 500;
+
+        &:hover {
+          color: var(--gh-link);
+        }
+      }
+
+      & .item-price {
+        color: var(--gh-text);
+        font-size: 1.1rem;
+      }
+
+      & .item-availability {
+        font-size: 0.875rem;
+
+        &.in-stock {
+          color: #59c38d;
+        }
+
+        &.out-of-stock {
+          color: #e45b78;
+        }
+      }
+
+      &:hover {
+        border-color: var(--gh-link);
+      }
+    }
+
+    /* Product table */
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      & th,
+      & td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--gh-border);
+      }
+
+      & th {
+        background: var(--gh-bg-alt);
+        color: var(--gh-text);
+        font-weight: 600;
+      }
+
+      & tr:hover td {
+        background: var(--gh-bg-hover);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      background: var(--gh-link);
+      color: #181818;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        filter: brightness(1.1);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--gh-link);
+        outline-offset: 2px;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &.btn-primary {
+        background: var(--gh-link);
+      }
+
+      &.btn-secondary {
+        background: var(--gh-bg-alt);
+        border: 1px solid var(--gh-border);
+        color: var(--gh-text);
+      }
+    }
+
+    /* Forms */
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--gh-bg-alt);
+      border: 1px solid var(--gh-border);
+      border-radius: 4px;
+      color: var(--gh-text);
+
+      &:focus {
+        outline: none;
+        border-color: var(--gh-link);
+      }
+
+      &::placeholder {
+        color: #888;
+      }
+    }
+
+    /* Nested media queries */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+
+      @media (min-width: 640px) {
+        padding: 1.5rem;
+
+        & .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        padding: 2rem;
+
+        & .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    }
+
+    /* Nested @supports */
+    .modal {
+      @supports (backdrop-filter: blur(10px)) {
+        & {
+          backdrop-filter: blur(10px);
+        }
+      }
+    }
+
+    /* Layer integration with nesting */
+    @layer components {
+      .alert {
+        padding: 1rem;
+        border-radius: 4px;
+        border-left: 4px solid;
+
+        &.alert-info {
+          background: var(--gh-bg-alt);
+          border-color: var(--gh-link);
+          color: var(--gh-text);
+        }
+
+        &.alert-success {
+          background: rgba(89, 195, 141, 0.1);
+          border-color: #59c38d;
+          color: #59c38d;
+        }
+
+        &.alert-warning {
+          background: rgba(216, 161, 74, 0.1);
+          border-color: #d8a14a;
+          color: #d8a14a;
+        }
+
+        &.alert-danger {
+          background: rgba(228, 91, 120, 0.1);
+          border-color: #e45b78;
+          color: #e45b78;
+        }
+      }
+    }
+
+    /* Modern :is() and :where() with nesting */
+    & :is(.btn, .button, button) {
+      cursor: pointer;
+    }
+
+    & :where(.btn-group) {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /*
+     * Note: Native CSS nesting is supported in:
+     * - Chrome 112+ (2023)
+     * - Firefox 110+ (2023)
+     * - Safari 16.4+ (2023)
+     * - Edge 112+ (2023)
+     *
+     * For older browsers, continue using Stylus or a build step.
+     * The @css{} wrapper ensures this works in Stylus builds today
+     * while providing native CSS output for modern deployments.
+     */
+  }
 }
